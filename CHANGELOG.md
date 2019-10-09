@@ -12,9 +12,12 @@
   - [Security] для обновлений безопасности.
 
 ## [ToDo]
-- Create Dockerfile
+- Create docker-compose.yml for local and service testing
 - Create basic .gitlab-ci.yml for pipeline
 
 ## [Unreleased]
+### Added
+- Create Dockerfile
+
 ### [Fixed]
 - Update pika to version 1.0.1

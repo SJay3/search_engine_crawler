@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  crawler_db:
+    image: mongo:${MONGO_VERSION}
+    volumes:
+      - crawler_db:/data/db
+  crawler_rabbit:
+
+  crawler:
+    image: ${USERNAME}/crawler:${CRAWLER_VERSION}
+    depends_on:
+      - crawler_db
+      - crawler_rabbit
+    environment:
+      - MONGO=crawler_db
+      - RMQ_HOST=crawler_rabbit
+
+volumes:
+  crawler_db:
