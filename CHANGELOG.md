@@ -16,3 +16,5 @@
 - Create basic .gitlab-ci.yml for pipeline
 
 ## [Unreleased]
+### [Fixed]
+- Update pika to version 1.0.1
