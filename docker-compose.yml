@@ -1,19 +1,21 @@
 version: '3.5'
 services:
-  crawler_db:
+  mongo_db:
     image: mongo:${MONGO_VERSION}
     volumes:
       - crawler_db:/data/db
-  crawler_rabbit:
+  rabbit:
+    image: rabbitmq:${RABBIT_VERSION}
 
-  crawler:
-    image: ${USERNAME}/crawler:${CRAWLER_VERSION}
+  engine:
+    image: ${USER_NAME}/crawler:${CRAWLER_VERSION}
+    restart: on-failure
     depends_on:
-      - crawler_db
-      - crawler_rabbit
+      - mongo_db
+      - rabbit
     environment:
-      - MONGO=crawler_db
-      - RMQ_HOST=crawler_rabbit
+      - MONGO=mongo_db
+      - RMQ_HOST=rabbit
 
 volumes:
   crawler_db:
